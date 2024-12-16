@@ -5,7 +5,7 @@ import ArticleCard from "./ArticleCard";
 
 export default function () {
   const [articles, setArticles] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { articleId } = useParams();
 
@@ -17,19 +17,19 @@ export default function () {
     }, []);
   });
 
-  return isLoading ? (
-    <section className="loading">
-      <h2>Loading!!!</h2>
-    </section>
-  ) : (
-    articles.map((article) => {
-      return (
-        <section>
-          <ul id="topic-list">
-            <ArticleCard articles={article}></ArticleCard>
-          </ul>
-        </section>
-      );
-    })
-  );
+  return articles.map((article) => {
+    return (
+      <section>
+        <ul id="topic-list">
+          <ArticleCard articles={article}></ArticleCard>
+        </ul>
+      </section>
+    );
+  });
 }
+
+// isLoading ? (
+//     <section className="loading">
+//       <h2>Loading!!!</h2>
+//     </section>
+//   ) : isLoading ?
