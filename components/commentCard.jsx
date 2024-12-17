@@ -1,10 +1,10 @@
 export function CommentCard({ comment }) {
   return (
     <>
-      <li>
+      <ul>
         <p>{comment.body}</p>
-        <p>{comment.author}</p>
-      </li>
+        <p>Comment by {comment.author}</p>
+      </ul>
     </>
   );
 }

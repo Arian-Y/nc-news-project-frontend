@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticlesById } from "../api";
+import { fetchArticlesById, setArticleVotes } from "../api";
 import { getCommentbyId } from "../api";
 import { CommentCard } from "./commentCard";
 
 export function ArticleDetails() {
   const { article_id } = useParams();
-  const [article, setArticle] = useState(null);
+  const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [comments, setComments] = useState([]);
+  const [vote, setVote] = useState();
 
   useEffect(() => {
     setIsLoading(true);
     fetchArticlesById(article_id).then((articleData) => {
-      console.log(articleData);
       setArticle(articleData);
       setIsLoading(false);
     });
@@ -27,6 +27,30 @@ export function ArticleDetails() {
     });
   }, [article_id]);
 
+  function incrementVote(event) {
+    setIsLoading(true);
+    setVote(article.votes);
+    const voteChange = {
+      inc_votes: 1,
+    };
+    setArticleVotes(article_id, voteChange).then(() => {
+      setArticle(article);
+      setIsLoading(false);
+    });
+  }
+
+  function decrementVote(event) {
+    setIsLoading(true);
+    setVote(article.votes);
+    const voteChange = {
+      inc_votes: -1,
+    };
+    setArticleVotes(article_id, voteChange).then(() => {
+      setArticle(article);
+      setIsLoading(false);
+    });
+  }
+
   if (isLoading) return <p>Loading...</p>;
   if (!article) return <p>No article to be found</p>;
   return (
@@ -35,8 +59,13 @@ export function ArticleDetails() {
         <h2>{article.title}</h2>
         <img src={article.article_img_url} alt={article.title}></img>
         <p>{article.body}</p>
-        <h3>{article.author}</h3>
+        <h3>Written by {article.author}</h3>
         <p>{article.comment_count} comments</p>
+        <p>
+          Votes: {article.votes}
+          <button onClick={incrementVote}>+</button>
+          <button onClick={decrementVote}>-</button>
+        </p>
         <p>Article id: {article.article_id}</p>
       </article>
       {comments.length === 0 ? (
