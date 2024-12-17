@@ -8,8 +8,6 @@ export default function ArticleCard({ articles }) {
           <Link to={`/articles/${articles.article_id}`}>{articles.title}</Link>
         </h2>
         <img src={articles.article_img_url} alt={articles.title}></img>
-        <h3>{articles.author}</h3>
-        <p>{articles.comment_count} comments</p>
         <p>Article id: {articles.article_id}</p>
       </ul>
     </>
