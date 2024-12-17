@@ -25,6 +25,17 @@ export function fetchArticlesById(article_id) {
     });
 }
 
+export function getCommentbyId(article_id) {
+  return ncNewsApi
+    .get(`/articles/${article_id}/comments`)
+    .then(({ data }) => {
+      return data.comments;
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
 // export function fetchTopics() {
 //   return ncNewsApi
 //     .get("/topics")
