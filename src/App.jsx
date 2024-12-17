@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "../components/Header";
 import { Routes, Route } from "react-router-dom";
 //import TopicsList from "../components/TopicsList";
-import ArticleList from "../components/ArticleList";
+import { ArticleList } from "../components/ArticleList";
 import { ArticleDetails } from "../components/ArticleDetails";
 
 function App() {

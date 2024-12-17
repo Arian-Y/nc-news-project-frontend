@@ -17,8 +17,8 @@ export function fetchArticles() {
 export function fetchArticlesById(article_id) {
   return ncNewsApi
     .get(`/articles/${article_id}`)
-    .then(({ data: { article } }) => {
-      return article;
+    .then(({ data }) => {
+      return data.articles;
     })
     .catch((err) => {
       console.error(err);

@@ -7,14 +7,15 @@ export function ArticleDetails() {
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {});
-  fetchArticlesById(article_id).then(() => {
-    setArticle(article);
-    setIsLoading(false);
+  useEffect(() => {
+    setIsLoading(true);
+    fetchArticlesById(article_id).then((articleData) => {
+      setArticle(articleData);
+      setIsLoading(false);
+    });
   }, [article_id]);
 
   if (isLoading) return <p>Loading...</p>;
-  if (!article) return <p>Article not found.</p>;
 
   return (
     <article>
