@@ -15,39 +15,34 @@ export function ArticleDetails() {
     setIsLoading(true);
     fetchArticlesById(article_id).then((articleData) => {
       setArticle(articleData);
+      getCommentbyId(article_id).then((commentData) => {
+        setComments(commentData);
+      });
       setIsLoading(false);
     });
-  }, [article_id]);
-
-  useEffect(() => {
-    setIsLoading(true);
-    getCommentbyId(article_id).then((commentData) => {
-      setComments(commentData);
-      setIsLoading(false);
-    });
-  }, [article_id]);
+  }, []);
 
   function incrementVote(event) {
-    setIsLoading(true);
+    event.preventDefault();
     setVote(article.votes);
     const voteChange = {
       inc_votes: 1,
     };
-    setArticleVotes(article_id, voteChange).then(() => {
-      setArticle(article);
-      setIsLoading(false);
+
+    setArticleVotes(article_id, voteChange).then((data) => {
+      setArticle(data);
     });
   }
 
   function decrementVote(event) {
-    setIsLoading(true);
+    event.preventDefault();
     setVote(article.votes);
     const voteChange = {
       inc_votes: -1,
     };
-    setArticleVotes(article_id, voteChange).then(() => {
-      setArticle(article);
-      setIsLoading(false);
+
+    setArticleVotes(article_id, voteChange).then((data) => {
+      setArticle(data);
     });
   }
 
@@ -88,3 +83,10 @@ export function ArticleDetails() {
     </>
   );
 }
+// useEffect(() => {
+//   setIsLoading(true);
+//   getCommentbyId(article_id).then((commentData) => {
+//     setComments(commentData);
+//     setIsLoading(false);
+//   });
+// }, [article_id]);

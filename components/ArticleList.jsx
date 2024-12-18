@@ -39,9 +39,3 @@ export function ArticleList() {
     })
   );
 }
-
-// isLoading ? (
-//     <section className="loading">
-//       <h2>Loading!!!</h2>
-//     </section>
-//   ) :

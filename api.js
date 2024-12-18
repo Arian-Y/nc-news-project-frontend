@@ -26,21 +26,16 @@ export function fetchArticlesById(article_id) {
 }
 
 export function getCommentbyId(article_id) {
-  return ncNewsApi
-    .get(`/articles/${article_id}/comments`)
-    .then(({ data }) => {
-      return data.comments;
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  return ncNewsApi.get(`/articles/${article_id}/comments`).then(({ data }) => {
+    return data.comments;
+  });
 }
 
 export function setArticleVotes(article_id, voteChange) {
   return ncNewsApi
     .patch(`/articles/${article_id}`, voteChange)
     .then(({ data }) => {
-      console.log(data);
+      return data;
     });
 }
 
