@@ -4,13 +4,14 @@ import { fetchArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 
 export function ArticleList() {
-  const { topic } = useParams();
+  const { topic, author, sort_by, order } = useParams();
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedAuthor, setSelectedAuthor] = useState(" ");
 
   useEffect(() => {
     setIsLoading(true);
-    fetchArticles(topic)
+    fetchArticles(topic, author, sort_by, order)
       .then((articles) => {
         setArticles(articles);
         setIsLoading(false);
@@ -19,24 +20,44 @@ export function ArticleList() {
         console.error("Error fetching articles:", err);
         setIsLoading(false);
       });
-  }, [topic]);
+  }, [topic, author, sort_by, order]);
+
+  function onAuthorChange(event) {
+    setSelectedAuthor(event.target.value);
+  }
 
   return isLoading ? (
     <section className="loading">
       <h2>Loading!!!</h2>
     </section>
   ) : (
-    articles.map((article) => {
-      return (
-        <section>
-          <ul id="topic-list">
-            <ArticleCard
-              articles={article}
-              key={article.article_id}
-            ></ArticleCard>
-          </ul>
-        </section>
-      );
-    })
+    <>
+      {articles.map((article) => {
+        return (
+          <section>
+            <ul id="topic-list">
+              <ArticleCard
+                articles={article}
+                key={article.article_id}
+              ></ArticleCard>
+            </ul>
+          </section>
+        );
+      })}
+    </>
   );
+}
+
+{
+  /* <form>
+<label className="label">
+  Authored by:{" "}
+  <select
+    name="author"
+    id="author-dropdown"
+    value={selectedAuthor}
+    onChange={onAuthorChange}
+  ></select>
+</label>
+</form> */
 }

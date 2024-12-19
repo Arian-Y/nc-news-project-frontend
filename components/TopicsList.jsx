@@ -6,7 +6,7 @@ export default function TopicsList() {
   const [topics, setTopics] = useState([]);
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedTopic, setSelectedTopic] = useState("football");
+  const [selectedTopic, setSelectedTopic] = useState("");
 
   useEffect(() => {
     setIsLoading(true);
