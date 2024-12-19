@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 //import TopicsList from "../components/TopicsList";
 import { ArticleList } from "../components/ArticleList";
 import { ArticleDetails } from "../components/ArticleDetails";
+import { CommentPage } from "../components/CommentPage";
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
         <Route
           path="/articles/:article_id"
           element={<ArticleDetails />}
+        ></Route>
+        <Route
+          path="/articles/:article_id/comments"
+          element={<CommentPage />}
         ></Route>
       </Routes>
     </section>

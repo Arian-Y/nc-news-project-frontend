@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchArticlesById, setArticleVotes } from "../api";
 import { getCommentbyId } from "../api";
-import { CommentCard } from "./commentCard";
 
 export function ArticleDetails() {
   const { article_id } = useParams();
@@ -20,7 +19,7 @@ export function ArticleDetails() {
       });
       setIsLoading(false);
     });
-  }, []);
+  }, [article_id, setComments]);
 
   function incrementVote(event) {
     event.preventDefault();
@@ -55,7 +54,6 @@ export function ArticleDetails() {
         <img src={article.article_img_url} alt={article.title}></img>
         <p>{article.body}</p>
         <h3>Written by {article.author}</h3>
-        <p>{article.comment_count} comments</p>
         <p>
           Votes: {article.votes}
           <button onClick={incrementVote}>+</button>
@@ -63,23 +61,16 @@ export function ArticleDetails() {
         </p>
         <p>Article id: {article.article_id}</p>
       </article>
-      {comments.length === 0 ? (
-        <p>No comments for this article</p>
-      ) : (
+      {
         <>
-          <h3>Comments:</h3>(
-          {comments.map((comment) => {
-            return (
-              <section>
-                <ul id="comment-list">
-                  <CommentCard comment={comment} key={comment.comment_id} />
-                </ul>
-              </section>
-            );
-          })}
-          )
+          <nav>
+            <Link to={`/articles/${article_id}/comments`}>
+              View all comments
+            </Link>
+            <p>{article.comment_count} comments</p>
+          </nav>
         </>
-      )}
+      }
     </>
   );
 }

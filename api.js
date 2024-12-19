@@ -39,6 +39,18 @@ export function setArticleVotes(article_id, voteChange) {
     });
 }
 
+export function postComments(article_id, commentText, user) {
+  return ncNewsApi
+    .post(`/articles/${article_id}/comments`, {
+      body: commentText,
+      userName: user,
+    })
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    });
+}
+
 // export function fetchTopics() {
 //   return ncNewsApi
 //     .get("/topics")
