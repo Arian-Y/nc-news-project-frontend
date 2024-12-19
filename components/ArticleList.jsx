@@ -22,10 +22,6 @@ export function ArticleList() {
       });
   }, [topic, author, sort_by, order]);
 
-  function onAuthorChange(event) {
-    setSelectedAuthor(event.target.value);
-  }
-
   return isLoading ? (
     <section className="loading">
       <h2>Loading!!!</h2>
@@ -47,6 +43,10 @@ export function ArticleList() {
     </>
   );
 }
+
+// function onAuthorChange(event) {
+//   setSelectedAuthor(event.target.value);
+// }
 
 {
   /* <form>
