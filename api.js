@@ -51,6 +51,13 @@ export function postComments(article_id, commentText, user) {
     });
 }
 
+export function deleteComments(comment_id) {
+  return ncNewsApi.delete(`/comments/${comment_id}`).then(({ data }) => {
+    console.log(data);
+    return data;
+  });
+}
+
 // export function fetchTopics() {
 //   return ncNewsApi
 //     .get("/topics")

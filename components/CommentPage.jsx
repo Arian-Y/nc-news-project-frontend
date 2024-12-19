@@ -25,7 +25,6 @@ export function CommentPage() {
       .then((newComment) => {
         setComments((prevComment) => [newComment.comment, ...prevComment]);
         setCommentText("");
-        setUserName("");
       })
       .catch((err) => {
         console.error("Failed to post comment:", err);
@@ -46,7 +45,12 @@ export function CommentPage() {
         comments.map((comment) => (
           <section key={comment.comment_id}>
             <ul id="comment-list">
-              <CommentCard comment={comment} />
+              <CommentCard
+                comment={comment}
+                user={user}
+                comments={comments}
+                setComments={setComments}
+              />
             </ul>
           </section>
         ))
