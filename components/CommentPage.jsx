@@ -65,7 +65,6 @@ export function CommentPage() {
           required
           onChange={handleCommentChange}
         />
-
         <button type="submit" id="submit-button">
           Submit
         </button>

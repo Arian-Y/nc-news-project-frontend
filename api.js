@@ -3,9 +3,9 @@ import axios from "axios";
 const ncNewsApi = axios.create({
   baseURL: "https://nc-news-project-5i4v.onrender.com/api",
 });
-export function fetchArticles() {
+export function fetchArticles(topic) {
   return ncNewsApi
-    .get("/articles")
+    .get("/articles", { params: { topic } })
     .then(({ data: { articles } }) => {
       return articles;
     })
@@ -46,25 +46,18 @@ export function postComments(article_id, commentText, user) {
       userName: user,
     })
     .then(({ data }) => {
-      console.log(data);
       return data;
     });
 }
 
 export function deleteComments(comment_id) {
   return ncNewsApi.delete(`/comments/${comment_id}`).then(({ data }) => {
-    console.log(data);
     return data;
   });
 }
 
-// export function fetchTopics() {
-//   return ncNewsApi
-//     .get("/topics")
-//     .then(({ data: { topics } }) => {
-//       return topics;
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//     });
-// }
+export function fetchTopics() {
+  return ncNewsApi.get("/topics").then(({ data }) => {
+    return data.topics;
+  });
+}

@@ -12,6 +12,9 @@ export default function Header() {
           <Link to={`/articles`} className="header-link">
             Articles
           </Link>
+          <Link to={`/topics`} className="header-link">
+            Topics
+          </Link>
         </ul>
       </nav>
     </header>
