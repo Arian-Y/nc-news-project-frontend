@@ -2,24 +2,22 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchArticlesById, setArticleVotes } from "../api";
 import { getCommentbyId } from "../api";
+import { CommentPage } from "./CommentPage";
 
 export function ArticleDetails() {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [comments, setComments] = useState([]);
   const [vote, setVote] = useState();
 
   useEffect(() => {
     setIsLoading(true);
     fetchArticlesById(article_id).then((articleData) => {
       setArticle(articleData);
-      getCommentbyId(article_id).then((commentData) => {
-        setComments(commentData);
-      });
+
       setIsLoading(false);
     });
-  }, [article_id, setComments]);
+  }, [article_id]);
 
   function incrementVote(event) {
     event.preventDefault();
@@ -64,9 +62,10 @@ export function ArticleDetails() {
       {
         <>
           <nav>
-            <Link to={`/articles/${article_id}/comments`}>
+            {/* <Link to={`/articles/${article_id}/comments`}>
               View all comments
-            </Link>
+            </Link> */}
+            <CommentPage />
             <p>{article.comment_count} comments</p>
           </nav>
         </>
@@ -74,10 +73,7 @@ export function ArticleDetails() {
     </>
   );
 }
-// useEffect(() => {
-//   setIsLoading(true);
-//   getCommentbyId(article_id).then((commentData) => {
-//     setComments(commentData);
-//     setIsLoading(false);
-//   });
-// }, [article_id]);
+
+{
+  /* <Link to={`/topics/${article}`}>Realted Articles</Link> */
+}

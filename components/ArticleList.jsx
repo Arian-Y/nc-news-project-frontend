@@ -4,12 +4,13 @@ import { fetchArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 
 export function ArticleList() {
+  const { topic } = useParams();
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    fetchArticles()
+    fetchArticles(topic)
       .then((articles) => {
         setArticles(articles);
         setIsLoading(false);
@@ -18,7 +19,7 @@ export function ArticleList() {
         console.error("Error fetching articles:", err);
         setIsLoading(false);
       });
-  }, []);
+  }, [topic]);
 
   return isLoading ? (
     <section className="loading">
