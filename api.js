@@ -3,9 +3,11 @@ import axios from "axios";
 const ncNewsApi = axios.create({
   baseURL: "https://nc-news-project-5i4v.onrender.com/api",
 });
-export function fetchArticles(topic) {
+export function fetchArticles(topic, sortBy, orderBy) {
   return ncNewsApi
-    .get("/articles", { params: { topic } })
+    .get("/articles", {
+      params: { topic, sort_by: sortBy, order: orderBy },
+    })
     .then(({ data: { articles } }) => {
       return articles;
     })
