@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchArticlesById, setArticleVotes } from "../api";
-import { getCommentbyId } from "../api";
 import { CommentPage } from "./CommentPage";
 
 export function ArticleDetails() {
@@ -62,9 +61,6 @@ export function ArticleDetails() {
       {
         <>
           <nav>
-            {/* <Link to={`/articles/${article_id}/comments`}>
-              View all comments
-            </Link> */}
             <CommentPage />
             <p>{article.comment_count} comments</p>
           </nav>

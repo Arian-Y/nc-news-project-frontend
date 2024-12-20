@@ -6,7 +6,7 @@ export default function TopicsList() {
   const [topics, setTopics] = useState([]);
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedTopic, setSelectedTopic] = useState("");
+  const [selectedTopic, setSelectedTopic] = useState("All");
 
   useEffect(() => {
     setIsLoading(true);
@@ -21,9 +21,10 @@ export default function TopicsList() {
       });
   }, []);
 
+  const topicQuery = selectedTopic === "All" ? "" : selectedTopic;
   useEffect(() => {
     setIsLoading(true);
-    fetchArticles(selectedTopic)
+    fetchArticles(topicQuery)
       .then((data) => {
         setArticles(data);
         setIsLoading(false);
@@ -32,7 +33,7 @@ export default function TopicsList() {
         console.error("Error fetching articles:", err);
         setIsLoading(false);
       });
-  }, [selectedTopic]);
+  }, [topicQuery]);
 
   function handleChange(event) {
     setSelectedTopic(event.target.value);
@@ -54,6 +55,7 @@ export default function TopicsList() {
               value={selectedTopic}
               onChange={handleChange}
             >
+              <option>All</option>
               {topics.map((topic) => {
                 return <option value={topic.slug}>{topic.slug}</option>;
               })}
@@ -61,7 +63,6 @@ export default function TopicsList() {
           </label>
         </form>
         <section>
-          <h3>Articles on {selectedTopic}</h3>
           <ul>
             {articles.map((article) => (
               <li key={article.article_id}>

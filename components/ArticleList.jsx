@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { fetchArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 
 export function ArticleList() {
-  const { topic, author, sort_by, order } = useParams();
+  const { topic } = useParams();
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [sortBy, setSortBy] = useState("created_at");
-  const [orderBy, SetOrderBy] = useState("asc");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [orderBy, SetOrderBy] = useState("ASC");
 
   useEffect(() => {
     setIsLoading(true);
-    fetchArticles(topic, author, sortBy, orderBy)
+    fetchArticles(topic, sortBy, orderBy)
       .then((articles) => {
         setArticles(articles);
         setIsLoading(false);
@@ -21,16 +22,19 @@ export function ArticleList() {
         console.error("Error fetching articles:", err);
         setIsLoading(false);
       });
-  }, [topic, author, sortBy, orderBy]);
+  }, [topic, searchParams]);
 
-  function changeOrderBy(event) {
-    event.preventDefault();
-    SetOrderBy(event.target.value);
-  }
   function changeSortBy(event) {
-    event.preventDefault();
-    setSortBy(event.target.value);
+    const { name, value } = event.target;
+    setSortBy(value);
+    setSearchParams({ ...Object.fromEntries(searchParams), [name]: value });
   }
+
+  const handleSortOrderChange = (event) => {
+    const { name, value } = event.target;
+    SetOrderBy(value);
+    setSearchParams({ ...Object.fromEntries(searchParams), [name]: value });
+  };
 
   return isLoading ? (
     <section className="loading">
@@ -40,26 +44,33 @@ export function ArticleList() {
     <>
       <form>
         <label className="label"> Sort by: </label>
-        <select value={sortBy} onChange={changeSortBy}>
+        <select onChange={changeSortBy} name="sort_by" value={sortBy}>
           <option value="created_at">Date</option>
           <option value="author">Author</option>
           <option value="votes">Votes</option>
         </select>
         <label className="label">Order by: </label>
-        <select value={orderBy} onChange={changeOrderBy}>
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
+        <select
+          id="sort-order-dropdown"
+          onChange={handleSortOrderChange}
+          name="order"
+          value={orderBy}
+        >
+          <option value="ASC">Ascending</option>
+          <option value="DESC">Descending</option>
         </select>
       </form>
-      {articles.map((article) => {
-        return (
-          <section key={article.article_id}>
-            <ul id="topic-list">
-              <ArticleCard articles={article}></ArticleCard>
-            </ul>
-          </section>
-        );
-      })}
+      <>
+        {articles.map((article) => {
+          return (
+            <section key={article.article_id}>
+              <ul id="topic-list">
+                <ArticleCard articles={article}></ArticleCard>
+              </ul>
+            </section>
+          );
+        })}
+      </>
     </>
   );
 }
