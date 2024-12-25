@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { fetchTopics, fetchArticles } from "../api";
+import { fetchTopics, fetchArticles } from "../../api";
 import { Link } from "react-router-dom";
 
-export default function TopicsList() {
+export function TopicsList() {
   const [topics, setTopics] = useState([]);
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

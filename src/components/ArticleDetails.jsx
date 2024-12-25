@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { fetchArticlesById, setArticleVotes } from "../api";
+import { fetchArticlesById, setArticleVotes } from "../../api";
 import { CommentPage } from "./CommentPage";
 
 export function ArticleDetails() {
@@ -11,11 +11,16 @@ export function ArticleDetails() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetchArticlesById(article_id).then((articleData) => {
-      setArticle(articleData);
+    fetchArticlesById(article_id)
+      .then((articleData) => {
+        setArticle(articleData);
 
-      setIsLoading(false);
-    });
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching articles:", err);
+        setIsLoading(false);
+      });
   }, [article_id]);
 
   function incrementVote(event) {

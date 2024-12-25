@@ -10,21 +10,13 @@ export function fetchArticles(topic, sortBy, orderBy) {
     })
     .then(({ data: { articles } }) => {
       return articles;
-    })
-    .catch((err) => {
-      console.error(err);
     });
 }
 
 export function fetchArticlesById(article_id) {
-  return ncNewsApi
-    .get(`/articles/${article_id}`)
-    .then(({ data }) => {
-      return data.articles;
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  return ncNewsApi.get(`/articles/${article_id}`).then(({ data }) => {
+    return data.articles;
+  });
 }
 
 export function getCommentbyId(article_id) {

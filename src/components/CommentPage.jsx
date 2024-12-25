@@ -1,6 +1,7 @@
+import "../CSS/Comments.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getCommentbyId, postComments } from "../api";
+import { getCommentbyId, postComments } from "../../api";
 import { CommentCard } from "./commentCard";
 
 export function CommentPage() {

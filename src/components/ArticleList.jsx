@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import { fetchArticles } from "../api";
+import { fetchArticles } from "../../api";
 import ArticleCard from "./ArticleCard";
 
 export function ArticleList() {
@@ -35,6 +35,8 @@ export function ArticleList() {
     SetOrderBy(value);
     setSearchParams({ ...Object.fromEntries(searchParams), [name]: value });
   };
+
+  if (!articles) return <p>No articles to be found</p>;
 
   return isLoading ? (
     <section className="loading">

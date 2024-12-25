@@ -1,4 +1,4 @@
-import { deleteComments } from "../api";
+import { deleteComments } from "../../api";
 
 export function CommentCard({ comment, user, setComments }) {
   function handleDelete(event) {
