@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
+import "../CSS/Header.css";
 
 export default function Header() {
   return (
     <header>
-      <h1>Headline Hub</h1>
-      <nav>
+      <nav className="header-css">
+        <div>
+          <img
+            className="header-logo"
+            src="../../public/images/HeadlineHub.png"
+            alt="Headline hub image"
+          />
+        </div>
         <div className="link-css">
           <Link to="/" className="header-link">
             Home

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "../CSS/ArticleCard.css";
 
 export default function ArticleCard({ articles }) {
+  console.log(articles.created_at);
   return (
     <div className="card">
       <img
@@ -21,5 +22,3 @@ export default function ArticleCard({ articles }) {
     </div>
   );
 }
-
-//  viewBox="0 0 24 24"
