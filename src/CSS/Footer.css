@@ -1,59 +1,60 @@
-.card {
-  width: 240px;
-  height: 254px;
-  padding: 0 15px;
-  text-align: center;
+.flex-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 12px;
-  background: #fff;
-  border-radius: 20px;
+  height: 100vh;
 }
 
-.card > * {
-  margin: 0;
+.btn {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  margin: 0.5rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card__title {
-  font-size: 23px;
-  font-weight: 900;
-  color: #333;
+.linkedin {
+  background: linear-gradient(to right, #3b82f6, #2563eb, #1d4ed8);
+}
+.linkedin:hover {
+  background: linear-gradient(to bottom right, #2563eb, #1d4ed8);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.5);
 }
 
-.card__content {
-  font-size: 13px;
-  line-height: 18px;
-  color: #333;
+.github {
+  background: linear-gradient(to right, #ef4444, #dc2626, #b91c1c);
+}
+.github:hover {
+  background: linear-gradient(to bottom right, #dc2626, #b91c1c);
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.5);
 }
 
-.card__form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.instagram {
+  background: linear-gradient(to right, #ec4899, #db2777, #be185d);
+}
+.instagram:hover {
+  background: linear-gradient(to bottom right, #db2777, #be185d);
+  box-shadow: 0 4px 10px rgba(236, 72, 153, 0.5);
 }
 
-.card__form input {
-  margin-top: 10px;
-  outline: 0;
-  background: rgb(255, 255, 255);
-  box-shadow: transparent 0px 0px 0px 1px inset;
-  padding: 0.6em;
-  border-radius: 14px;
-  border: 1px solid #333;
-  color: black;
+.btn:focus {
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
 }
 
-.card__form button {
-  border: 0;
-  background: red;
-  color: #fff;
-  padding: 0.68em;
-  border-radius: 14px;
-  font-weight: bold;
+.linkedin:focus {
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
 }
 
-.sign-up:hover {
-  opacity: 0.8;
+.github:focus {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.3);
+}
+
+.instagram:focus {
+  box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.3);
 }

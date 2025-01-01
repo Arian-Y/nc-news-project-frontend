@@ -32,6 +32,8 @@ export function CommentPage() {
       });
   }
 
+  if (comments.length === 0) return <p>No comments to be found</p>;
+
   function handleCommentChange(event) {
     setCommentText(event.target.value);
   }

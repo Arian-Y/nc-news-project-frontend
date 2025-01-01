@@ -1,15 +1,25 @@
 import { Link } from "react-router-dom";
+import "../CSS/ArticleCard.css";
 
 export default function ArticleCard({ articles }) {
   return (
-    <>
-      <ul id={articles.article_id}>
+    <div className="card">
+      <img
+        className="card__image"
+        src={articles.article_img_url}
+        alt={articles.title}
+      />
+      <div className="card__content" id={articles.article_id}>
         <h2>
-          <Link to={`/articles/${articles.article_id}`}>{articles.title}</Link>
+          <Link className="card__title" to={`/articles/${articles.article_id}`}>
+            {articles.title}
+          </Link>
         </h2>
-        <img src={articles.article_img_url} alt={articles.title}></img>
+        <p className="card__description">{articles.body}</p>
         <p>Article id: {articles.article_id}</p>
-      </ul>
-    </>
+      </div>
+    </div>
   );
 }
+
+//  viewBox="0 0 24 24"

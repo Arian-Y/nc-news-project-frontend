@@ -1,3 +1,4 @@
+import "../CSS/Loader.css";
 import { useState, useEffect } from "react";
 import { fetchTopics, fetchArticles } from "../../api";
 import { Link } from "react-router-dom";
@@ -41,7 +42,7 @@ export function TopicsList() {
 
   return isLoading ? (
     <section className="loading">
-      <h2>Loading!!!</h2>
+      <div class="loader"></div>
     </section>
   ) : (
     <>

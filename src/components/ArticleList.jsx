@@ -1,3 +1,5 @@
+import "../CSS/Loader.css";
+import "../CSS/ArticleList.css";
 import { useState, useEffect } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { fetchArticles } from "../../api";
@@ -40,7 +42,7 @@ export function ArticleList() {
 
   return isLoading ? (
     <section className="loading">
-      <h2>Loading!!!</h2>
+      <div class="loader"></div>
     </section>
   ) : (
     <>
@@ -62,7 +64,7 @@ export function ArticleList() {
           <option value="DESC">Descending</option>
         </select>
       </form>
-      <>
+      <div className="article-list">
         {articles.map((article) => {
           return (
             <section key={article.article_id}>
@@ -72,7 +74,7 @@ export function ArticleList() {
             </section>
           );
         })}
-      </>
+      </div>
     </>
   );
 }
