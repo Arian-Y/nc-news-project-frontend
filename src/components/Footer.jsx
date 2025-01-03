@@ -11,8 +11,6 @@ export default function Footer() {
           />
           <title>Buttons</title>
           <link rel="stylesheet" href="styles.css" />
-        </section>
-        <section>
           <div className="flex-container">
             <button className="btn linkedin">LinkedIn</button>
             <button className="btn github">GitHub</button>

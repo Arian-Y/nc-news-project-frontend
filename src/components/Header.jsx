@@ -8,7 +8,7 @@ export default function Header() {
         <div>
           <img
             className="header-logo"
-            src="../../public/images/HeadlineHub.png"
+            src="/images/HeadlineHub.png"
             alt="Headline hub image"
           />
         </div>
