@@ -1,4 +1,5 @@
 import "../CSS/Loader.css";
+import "../CSS/TopicList.css";
 import { useState, useEffect } from "react";
 import { fetchTopics, fetchArticles } from "../../api";
 import { Link } from "react-router-dom";
@@ -64,12 +65,18 @@ export function TopicsList() {
           </label>
         </form>
         <section>
-          <ul>
+          <ul className="ui middle aligned divided list">
             {articles.map((article) => (
-              <li key={article.article_id}>
-                <Link to={`/articles/${article.article_id}`}>
-                  {article.title}
-                </Link>
+              <li className="item" key={article.article_id}>
+                <div className="text-divider">
+                  <Link
+                    className="topic-link"
+                    to={`/articles/${article.article_id}`}
+                  >
+                    {article.title}
+                  </Link>
+                  <span className="divider"></span>
+                </div>
               </li>
             ))}
           </ul>

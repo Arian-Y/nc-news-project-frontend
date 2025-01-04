@@ -1,0 +1,26 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.ui.list {
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.text-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: black;
+  margin-top: 8px;
+}

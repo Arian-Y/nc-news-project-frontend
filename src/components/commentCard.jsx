@@ -20,11 +20,10 @@ export function CommentCard({ comment, user, setComments }) {
         </button>
       </section>
       <section>
-        <li>
+        <ul>
           <p>{comment.body}</p>
           <p>Comment by {comment.author}</p>
-          <p>id: {comment.comment_id}</p>
-        </li>
+        </ul>
       </section>
     </>
   );

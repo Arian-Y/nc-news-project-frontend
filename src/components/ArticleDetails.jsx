@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchArticlesById, setArticleVotes } from "../../api";
 import { CommentPage } from "./CommentPage";
-
+import "../CSS/ArticleDetails.css";
 export function ArticleDetails() {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
@@ -52,16 +52,23 @@ export function ArticleDetails() {
   return (
     <>
       <article>
-        <h2>{article.title}</h2>
-        <img src={article.article_img_url} alt={article.title}></img>
-        <p>{article.body}</p>
-        <h3>Written by {article.author}</h3>
+        <h2 id="article-title">{article.title}</h2>
+        <span className="divider"></span>
+        <p className="padding"></p>
+        <img
+          className="article-image"
+          src={article.article_img_url}
+          alt={article.title}
+        ></img>
+        <p className="article-text">{article.body}</p>
+        <h3 className="article-author">Written by {article.author}</h3>
+        <span className="divider"></span>
+        <p className="padding"></p>
         <p>
           Votes: {article.votes}
           <button onClick={incrementVote}>+</button>
           <button onClick={decrementVote}>-</button>
         </p>
-        <p>Article id: {article.article_id}</p>
       </article>
       {
         <>
@@ -73,8 +80,4 @@ export function ArticleDetails() {
       }
     </>
   );
-}
-
-{
-  /* <Link to={`/topics/${article}`}>Realted Articles</Link> */
 }
