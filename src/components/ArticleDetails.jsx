@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import "../CSS/Loader.css";
+import "../CSS/Comments.css";
 import { Link, useParams } from "react-router-dom";
 import { fetchArticlesById, setArticleVotes } from "../../api";
 import { CommentPage } from "./CommentPage";
@@ -47,7 +49,12 @@ export function ArticleDetails() {
     });
   }
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <section className="loading">
+        <div class="loader"></div>
+      </section>
+    );
   if (!article) return <p>No article to be found</p>;
   return (
     <>
@@ -64,9 +71,11 @@ export function ArticleDetails() {
         <h3 className="article-author">Written by {article.author}</h3>
         <span className="divider"></span>
         <p className="padding"></p>
-        <p>
-          Votes: {article.votes}
-          <button onClick={incrementVote}>+</button>
+        <p className="vote-section">
+          <button className="vote-button" onClick={incrementVote}>
+            +
+          </button>
+          Rate this article: {article.votes}
           <button onClick={decrementVote}>-</button>
         </p>
       </article>

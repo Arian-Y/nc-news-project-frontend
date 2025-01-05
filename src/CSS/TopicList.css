@@ -24,3 +24,7 @@ body {
   background-color: black;
   margin-top: 8px;
 }
+
+.topic-link {
+  color: black;
+}
