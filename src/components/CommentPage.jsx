@@ -1,4 +1,5 @@
 import "../CSS/Comments.css";
+
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getCommentbyId, postComments } from "../../api";
@@ -58,12 +59,12 @@ export function CommentPage() {
           </section>
         ))
       )}
-      <form onSubmit={handleSubmit}>
+      <form class="form" onSubmit={handleSubmit}>
         <input
           type="text"
           name="comment-text"
-          placeholder="comment"
-          id="comment-input"
+          placeholder="Type your text"
+          className="input"
           value={commentText}
           required
           onChange={handleCommentChange}
@@ -71,6 +72,7 @@ export function CommentPage() {
         <button type="submit" id="submit-button">
           Submit
         </button>
+        <span class="input-border"></span>
       </form>
     </>
   );

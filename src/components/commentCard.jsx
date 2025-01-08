@@ -1,4 +1,5 @@
 import { deleteComments } from "../../api";
+import "../CSS/Comments.css";
 
 export function CommentCard({ comment, user, setComments }) {
   function handleDelete(event) {
@@ -11,20 +12,33 @@ export function CommentCard({ comment, user, setComments }) {
       });
     }
   }
-
   return (
-    <>
-      <section>
-        <button type="delete" id="delete-button" onClick={handleDelete}>
-          Delete
-        </button>
-      </section>
-      <section>
-        <ul>
-          <p>{comment.body}</p>
-          <p>Comment by {comment.author}</p>
-        </ul>
-      </section>
-    </>
+    <div class="card-comment">
+      <div class="bg"></div>
+      <div class="blob"></div>
+
+      {user !== comment.author ? (
+        <section className="comment-text">
+          <ul>
+            <p>{comment.body}</p>
+            <p>Comment by {comment.author}</p>
+          </ul>
+        </section>
+      ) : (
+        <>
+          <section>
+            <button type="delete" id="delete-button" onClick={handleDelete}>
+              Delete
+            </button>
+          </section>
+          <section>
+            <ul className="comment-text">
+              <p>{comment.body}</p>
+              <p>Comment by {comment.author}</p>
+            </ul>
+          </section>
+        </>
+      )}
+    </div>
   );
 }

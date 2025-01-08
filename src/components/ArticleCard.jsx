@@ -16,7 +16,8 @@ export default function ArticleCard({ articles }) {
           </Link>
         </h2>
         <p className="card__description">{articles.body}</p>
-        <p>Article id: {articles.article_id}</p>
+        <p>Published on: {articles.created_at}</p>
+        <p>Click on the title to find out more...</p>
       </div>
     </div>
   );

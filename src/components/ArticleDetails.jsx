@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "../CSS/Loader.css";
-import "../CSS/Comments.css";
+
 import { Link, useParams } from "react-router-dom";
 import { fetchArticlesById, setArticleVotes } from "../../api";
 import { CommentPage } from "./CommentPage";
@@ -75,10 +75,13 @@ export function ArticleDetails() {
           <button className="vote-button" onClick={incrementVote}>
             +
           </button>
-          Rate this article: {article.votes}
+          <p>Rate this article: {article.votes}</p>
           <button onClick={decrementVote}>-</button>
         </p>
       </article>
+      <span className="divider"></span>
+      <p className="padding"></p>
+
       {
         <>
           <nav>

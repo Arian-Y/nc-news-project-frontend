@@ -15,4 +15,10 @@
 
 .header-link {
   padding: 30px;
+  text-decoration: none;
+  color: red;
+}
+
+.header-link:hover {
+  color: black;
 }
