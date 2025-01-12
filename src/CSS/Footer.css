@@ -1,0 +1,63 @@
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: top;
+  height: 100vh;
+  margin-top: -175px;
+}
+
+.btn {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  margin: 0.5rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  margin-top: -20px;
+}
+
+.linkedin {
+  background: linear-gradient(to right, #3b82f6, #2563eb, #1d4ed8);
+}
+.linkedin:hover {
+  background: linear-gradient(to bottom right, #2563eb, #1d4ed8);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.5);
+}
+
+.github {
+  background: linear-gradient(to right, #ef4444, #dc2626, #b91c1c);
+}
+.github:hover {
+  background: linear-gradient(to bottom right, #dc2626, #b91c1c);
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.5);
+}
+
+.instagram {
+  background: linear-gradient(to right, #ec4899, #db2777, #be185d);
+}
+.instagram:hover {
+  background: linear-gradient(to bottom right, #db2777, #be185d);
+  box-shadow: 0 4px 10px rgba(236, 72, 153, 0.5);
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+}
+
+.linkedin:focus {
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+}
+
+.github:focus {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.3);
+}
+
+.instagram:focus {
+  box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.3);
+}

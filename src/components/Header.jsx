@@ -1,22 +1,34 @@
 import { Link } from "react-router-dom";
+import "../CSS/Header.css";
 
 export default function Header() {
   return (
     <header>
-      <h1>NC NEWS</h1>
-      <nav>
-        <ul>
+      <nav className="header-css">
+        <div>
+          <img
+            className="header-logo"
+            src="/images/HeadlineHub.png"
+            alt="Headline hub image"
+          />
+        </div>
+        <div className="link-css">
           <Link to="/" className="header-link">
             Home
           </Link>
+
           <Link to={`/articles`} className="header-link">
             Articles
           </Link>
+
           <Link to={`/topics`} className="header-link">
             Topics
           </Link>
-        </ul>
+        </div>
       </nav>
+      <h2 className="Welcome-tag">
+        Welcome to Headline Hub Click On The Articles Above
+      </h2>
     </header>
   );
 }

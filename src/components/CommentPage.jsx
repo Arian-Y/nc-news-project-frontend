@@ -1,6 +1,8 @@
+import "../CSS/Comments.css";
+
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getCommentbyId, postComments } from "../api";
+import { getCommentbyId, postComments } from "../../api";
 import { CommentCard } from "./commentCard";
 
 export function CommentPage() {
@@ -31,6 +33,8 @@ export function CommentPage() {
       });
   }
 
+  if (comments.length === 0) return <p>No comments to be found</p>;
+
   function handleCommentChange(event) {
     setCommentText(event.target.value);
   }
@@ -55,12 +59,12 @@ export function CommentPage() {
           </section>
         ))
       )}
-      <form onSubmit={handleSubmit}>
+      <form class="form" onSubmit={handleSubmit}>
         <input
           type="text"
           name="comment-text"
-          placeholder="comment"
-          id="comment-input"
+          placeholder="Type your text"
+          className="input"
           value={commentText}
           required
           onChange={handleCommentChange}
@@ -68,6 +72,7 @@ export function CommentPage() {
         <button type="submit" id="submit-button">
           Submit
         </button>
+        <span class="input-border"></span>
       </form>
     </>
   );

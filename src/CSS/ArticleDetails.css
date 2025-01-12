@@ -1,0 +1,39 @@
+#article-title {
+  font-size: xx-large;
+  color: rgb(14, 3, 3);
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: black;
+  margin-top: 8px;
+  display: block;
+}
+
+.article-image {
+  border-radius: 12px;
+  width: 600px;
+  height: 400px;
+}
+
+.padding {
+  padding: 5px;
+}
+
+.article-text {
+  font-family: Arial, sans-serif;
+  text-align: left;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: rgb(14, 3, 3);
+}
+
+.article-author {
+  text-align: left;
+  color: rgb(14, 3, 3);
+}
+
+.vote-section {
+  padding-bottom: 20px;
+}
