@@ -2,7 +2,7 @@ import "../CSS/Footer.css";
 export default function Footer() {
   return (
     <footer>
-      <section>
+      {/* <section>
         <section>
           <meta charSet="UTF-8" />
           <meta
@@ -17,7 +17,7 @@ export default function Footer() {
             <button className="btn instagram">Instagram</button>
           </div>
         </section>
-      </section>
+      </section> */}
     </footer>
   );
 }

@@ -26,6 +26,9 @@ export default function Header() {
           </Link>
         </div>
       </nav>
+      <h2 className="Welcome-tag">
+        Welcome to Headline Hub Click On The Articles Above
+      </h2>
     </header>
   );
 }
